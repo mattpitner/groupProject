@@ -14,7 +14,7 @@
     <!--JumboTron-->
     <!--Make smaller-->
     <!--Create Header and subheader not using jumbotron?-->
-    <div class="wrapper">
+    <div class="wrapper" class="clearfix">
         <div class="">
             <div class="container jumbotron">
                 <!--Container is from BootStrap, jumbotron is ours-->
@@ -28,26 +28,28 @@
 
         <form>
             <div id="row">
-                <div id="col-md-3">
-                    <div class="form">
+               <div id="col-md-3">
+                    <div class="form1">
                         <label for="bandInput">Band/Artist</label>
                         <input type="name" placeholder="Band name">
+                        <input class="btn1 btn-primary" type="submit" value="Submit">
                     </div>
                 </div>
             </div>
-
-            <div id="row">
+       
                 <div id="col-md-3">
-                    <div class="form">
+                    <div class="form2">
                         <label for="location">City, State <br> </label>
                         <input type="name" placeholder="City, State">
+                        <input class="btn2 btn-primary" type="submit" value="Submit">
                     </div>
                 </div>
             </div>
+            
         </form>
 
 
-        <div class="scrollBoxSuggestions">
+        <div class="scrollBoxSuggestions" class="clearfix">
             As you can see, once there's enough text in this box, the box will grow scroll bars... that's why we call it
             a
             scroll box! You could also place an image into the scroll box.
@@ -103,7 +105,7 @@
             ullamcorper imperdiet odio.
         </div>
 
-        <div class="scrollBoxResults">
+        <div class="scrollBoxResults" class="clearfix">
             As you can see, once there's enough text in this box, the box will grow scroll bars... that's why we call it
             a
             scroll box! You could also place an image into the scroll box.

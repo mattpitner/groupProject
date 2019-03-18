@@ -1,5 +1,7 @@
 .wrapper{
     background: lightblue;
+    position: relative;
+    
     
 }
 
@@ -20,7 +22,7 @@
 
 .boxed{
     margin: 0 10% 0 75%;
-    height: 
+   
 }
 
 .scrollBoxSuggestions{
@@ -42,3 +44,15 @@
     float: left;
 
 }
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+  }
+
+  .form1{
+      width: 45%;
+  }
+  .form2{
+      width: 50%;
+  }
