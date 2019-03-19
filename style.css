@@ -63,10 +63,10 @@ body {
     display: table;
   }
 
-#band-input {
+#bandInput {
     width: 300px;
 }
  
-#location-input {
+#location {
     width: 300px;
 }
