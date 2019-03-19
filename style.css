@@ -1,7 +1,3 @@
-.wrapper{
-    background: lightblue;
-    
-}
 
 .jumbotron{
     margin: 0 20% 3% 5%;
@@ -18,9 +14,9 @@
     position: absolute;
 }
 
-.boxed{
+.boxed {
     margin: 0 10% 0 75%;
-    height: 
+
 }
 
 .scrollBoxSuggestions{
@@ -30,7 +26,12 @@
     font: 16px/26px Georgia, Garamond, Serif;
     overflow: auto;
     float: right;
+    background-color: green;
 
+}
+
+.clearfix {
+    overflow: auto;
 }
 
 .scrollBoxResults{
@@ -40,5 +41,14 @@
     font: 16px/26px Georgia, Garamond, Serif;
     overflow: auto;
     float: left;
+    background-color: green;
 
 }
+
+body {
+    background-color: lightblue;
+    margin: 100px;
+    border: 5px;
+}
+
+
