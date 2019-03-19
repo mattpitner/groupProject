@@ -1,52 +1,64 @@
+
+</body>
+
+</html> -->
+
+<!DOCTYPE html>
+
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-        crossorigin="anonymous">
+
+    <title>Group Project</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
     <link rel="stylesheet" href="style.css">
     
 </head>
 
 <body>
-    <!--JumboTron-->
-    <!--Make smaller-->
-    <!--Create Header and subheader not using jumbotron?-->
-    <div class="wrapper">
+    
+    <div class="wrapper" class="clearfix">
         <div class="">
             <div class="container jumbotron">
-                <!--Container is from BootStrap, jumbotron is ours-->
+              
                 <h1 class="display-4">Project Name</h1>
-                <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.
+               
                 </p>
             </div>
         </div>
 
-        <!--Search Box for TicketMaster-->
+     
 
         <form>
-            <div id="row">
-                <div id="col-md-3">
-                    <div class="form">
+            <div class="row" id="row">
+                <div class="col-md-6" id="col1" >
+                    <div class="form" id="form1">
                         <label for="bandInput">Band/Artist</label>
                         <input type="name" id="bandInput" placeholder="Band name">
-                    </div>
-                </div>
-            </div>
 
-            <div id="row">
-                <div id="col-md-3">
-                    <div class="form">
-                        <label for="location">City, State <br> </label>
-                        <input type="name" id="location" placeholder="Denver">
                     </div>
-                    <button class="btn btn-primary testing" id="submit" value="Submit" type="submit">Submit</button>
                 </div>
+
+
+                    <div class="col-md-6" >
+                        <div class="form" id="form2">
+                            <label for="location">City, State <br> </label>
+                            <input type="name" id="location" placeholder="City">
+                            <button class="btn btn-primary testing" id="submit" value="Submit" type="submit">Submit</button>
+                        </div>
+                    </div>
+                  
+
             </div>
         </form>
+    </div>
+
+<br>
 
 
         <div id="suggestions" class="scrollBoxSuggestions" class="clearfix">
@@ -56,6 +68,7 @@
         <div id="results" class="scrollBoxResults" class="clearfix">
            
         </div>
+
 
 
     </div>
