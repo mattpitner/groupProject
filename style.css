@@ -48,6 +48,7 @@ body {
     margin-right: 5%;
 
 
+
 }
 
 .clearfix {
@@ -64,6 +65,7 @@ body {
     background: white;
     margin-left: 5%;
 
+
 }
 .clearfix::after {
     content: "";
@@ -71,9 +73,8 @@ body {
     display: table;
   }
 
-
 #bandInput {
     width: 300px;
-}
+
 
 
