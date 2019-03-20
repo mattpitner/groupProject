@@ -1,10 +1,10 @@
-
+var artistSearched = [];
+var suggestion = [];
 
 function displayBandInfo() {
 
 
-    var queryURL = "https://app.ticketmaster.com/discovery/v2/events.json?keyword=" + bandName + "&city=" + city + "&apikey=cBL4SnU5itvcXd4uhDb6raolj7gNc9co"
-
+    var queryURL = "https://app.ticketmaster.com/discovery/v2/events.json?keyword=" + bandName + "&city=" + city + "&apikey=cBL4SnU5itvcXd4uhDb6raolj7gNc9co" 
 
     $.ajax({
         url: queryURL,
@@ -25,15 +25,21 @@ function displayBandInfo() {
 
 $("#submit").on("click", function (event) {
     event.preventDefault();
+    $("#results").empty();
+     $(".scrollBoxSuggestions").empty();
+     suggestion=[];
+
     bandName = $("#bandInput").val().trim();
     city = $("#location").val()
-    // console.log(bandName);
-    // console.log(city);
+    
     var artist = $("#bandInput").val();
     artistSearched.push(artist);
-    // console.log(artist);
-    displaySuggestionInfo();
+    
     displayBandInfo();
+    displaySuggestionInfo();
+
+    $("input").val("")
+    
 });
 
 function appendEvent(event) {
@@ -50,45 +56,40 @@ function appendEvent(event) {
         }
 
     }
-    // console.log(image);
-
-
-    $("#results").append(eventName);
-    $("#results").append(url);
+  
+    $("#results").append("<h2>" + eventName + "</h2>");
+    $("#results").append("<p> <a href=" + url + " target='_blank'>Click Here For Tickets!</a></p>");
     $("#results").append("<image src=" + image.url + "></image><br>");
-
-}
-
-
-//===================
-var artistSearched = [];
-var suggestion = [];
-
+ } 
 
 function displaySuggestionInfo() {
 
     // var suggestion = this.attr("Name");
     var queryURL = "https://tastedive.com/api/similar?q=" + artistSearched + "&k=332517-project1-8TB60H4T";
-
+    suggestion = [];
     $.ajax({
         url: queryURL,
         method: "GET",
         contentType: "application/json",
         dataType: "jsonp"
     }).then(function (response) {
-        // console.log(response.Similar);
-        // console.log(response);
-        suggestion = [];
-        // console.log(response.Similar.Results);
+       
+         console.log(response);
+        
+        $(".scrollBoxSuggestions").html("");
+        console.log('suggestion pre loop', suggestion)
+       
         for (var i = 0; i < 20; i++) {
-            suggestion.push(response.Similar.Results[i].Name)
-            $(".scrollBoxSuggestions").append("<p>Suggestions:" + response.Similar.Results[i].Name + "</p>");
-            // console.log(response.Similar.Results[i].Name);
+
+            var suggestedLink = response.Similar.Results[i].Name;
+
+            var finalLink = suggestedLink.split(' ').join('+');
+            console.log(finalLink)
+            $(".scrollBoxSuggestions").prepend("<p><a href= https://www.ticketmaster.com/search?q=" + finalLink + "'&sort=relevance%2Cdesc&radius=10000&tab=events&daterange=all' target='_blank'>" + suggestedLink + "</a></p>");
         }
-        // console.log(suggestion);
-        for (var i = 0; i < suggestion.length; i++) {
-            // displayBandInfo.push(suggestion);
-        }
+
+        console.log('suggestion post loop', suggestion)
+       
     });
 }
 
@@ -100,48 +101,10 @@ function rerunTicketMaster() {
             url: queryURL,
             method: "GET"
         }).then(function (response) {
-            // console.log(response);
+            
             $(".scrollBoxSuggestions").append("<p>From TM:" + response._embedded.events + "</p>");
 
         });
 
     };
 }
-
-
-// if (response.Similar.Results[i].Name === TicketMasterArray[i].Artist){
-//     $(".scrollBoxSuggestions").append("<p>Suggestions:" + response.Similar.Results[i].Name + "</p>")
-
-//  }   else {
-//     $(".scrollBoxSuggestions").append("<p> No upcoming Good shows </p>")
-//  }
-
-
-// console.log(suggestion)
-
-
-// $(".btn").on("click", function (event) {
-
-//     event.preventDefault();
-
-//     var artist = $("#bandInput").val();
-//     artistSearched.push(artist);
-//     console.log(artist);
-
-//     displaySuggestionInfo();
-
-// });
-
-
-
-
-// var artistSearched = [];
-
-    // TicketMasterArray[i].Artits is array of all artists performing in the searched area
-// that ticket master has on record
-// if (response.Similar.Results[i].Name === TicketMasterArray[i].Artist){
-//     $(".scrollBoxSuggestions").append("<p>Suggestions:" + response.Similar.Results[i].Name + "</p>")
-
-//  }   else {
-//     $(".scrollBoxSuggestions").append("<p> No upcoming Good shows </p>")
-//  }

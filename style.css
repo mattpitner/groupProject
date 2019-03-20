@@ -13,7 +13,8 @@ body {
 .jumbotron{
     margin: 0 20% 3% 5%;
     height: 50px;
-    position: relative;
+    position: relative; 
+    width: 100%;
 }
 
 .display-4{
@@ -73,8 +74,18 @@ body {
     display: table;
   }
 
-#bandInput {
-    width: 300px;
+#suggestionsHeader {
+    text-align: center;
+}
+
+#resultsHeader {
+    text-align: center;
+}
+
+#ourName {
+    text-align: center;
+    
+}
 
 
 
