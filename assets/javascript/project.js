@@ -1,9 +1,14 @@
 
 
+var bands = [];
+var bandName = "";
+var city = "";
+
 function displayBandInfo() {
 
 
-    var queryURL = "https://app.ticketmaster.com/discovery/v2/events.json?keyword=" + bandName + "&city=" + city + "&apikey=cBL4SnU5itvcXd4uhDb6raolj7gNc9co"
+    var queryURL = "https://app.ticketmaster.com/discovery/v2/events.json?keyword=" 
+    + bandName + "&city=" + city + "&apikey=cBL4SnU5itvcXd4uhDb6raolj7gNc9co"
 
 
     $.ajax({
@@ -23,6 +28,7 @@ function displayBandInfo() {
     });
 };
 
+
 $("#submit").on("click", function (event) {
     event.preventDefault();
     bandName = $("#bandInput").val().trim();
@@ -35,6 +41,7 @@ $("#submit").on("click", function (event) {
     displaySuggestionInfo();
     displayBandInfo();
 });
+
 
 function appendEvent(event) {
 
@@ -62,6 +69,13 @@ function appendEvent(event) {
 
 //===================
 var artistSearched = [];
+
+ var suggestion = [];
+
+function displaySuggestionInfo() {
+
+   
+=======
 var suggestion = [];
 
 
@@ -77,6 +91,34 @@ function displaySuggestionInfo() {
         dataType: "jsonp"
     }).then(function (response) {
         // console.log(response.Similar);
+
+        console.log(response);
+        // suggestion=[];
+        // console.log(response.Similar.Results);
+        for (var i = 0; i < response.Similar.Results.length; i++) {
+            suggestion.push(response.Similar.Results[i].Name);
+            $(".scrollBoxSuggestions").append("<p>Suggestions:" + response.Similar.Results[i].Name + "</p>");
+           
+        }
+    });
+    
+}   
+ 
+
+
+$("#submit").on("click", function (event) {
+    event.preventDefault();
+    bandName = $("#bandInput").val().trim();
+    city = $("#location").val()
+    // console.log(bandName);
+    // console.log(city);
+    var artist = $("#bandInput").val();
+    artistSearched.push(artist);
+    // console.log(artist);
+    displaySuggestionInfo();
+    displayBandInfo();
+    // requeryTM();
+=======
         // console.log(response);
         suggestion = [];
         // console.log(response.Similar.Results);
@@ -109,39 +151,9 @@ function rerunTicketMaster() {
 }
 
 
-// if (response.Similar.Results[i].Name === TicketMasterArray[i].Artist){
-//     $(".scrollBoxSuggestions").append("<p>Suggestions:" + response.Similar.Results[i].Name + "</p>")
-
-//  }   else {
-//     $(".scrollBoxSuggestions").append("<p> No upcoming Good shows </p>")
-//  }
-
-
-// console.log(suggestion)
-
-
-// $(".btn").on("click", function (event) {
-
-//     event.preventDefault();
-
-//     var artist = $("#bandInput").val();
-//     artistSearched.push(artist);
-//     console.log(artist);
-
-//     displaySuggestionInfo();
-
-// });
 
 
 
 
-// var artistSearched = [];
 
-    // TicketMasterArray[i].Artits is array of all artists performing in the searched area
-// that ticket master has on record
-// if (response.Similar.Results[i].Name === TicketMasterArray[i].Artist){
-//     $(".scrollBoxSuggestions").append("<p>Suggestions:" + response.Similar.Results[i].Name + "</p>")
 
-//  }   else {
-//     $(".scrollBoxSuggestions").append("<p> No upcoming Good shows </p>")
-//  }
