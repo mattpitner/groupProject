@@ -8,6 +8,7 @@
 body {
     background: lightblue;
 }
+
 h1 {
     background-image: url(https://img.wallpapersafari.com/desktop/1440/900/62/83/v3qT9H.jpg);
     height: 150px;
@@ -16,6 +17,7 @@ h1 {
     width: 100%;
     padding: 50px 0px 0px 0px;
     background-repeat: no-repeat;
+
 }
 
 .boxed {
@@ -67,8 +69,10 @@ h1 {
   }
 
 
+
 #bandInput {
     width: 300px;
 }
+
 
 
