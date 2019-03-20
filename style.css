@@ -9,21 +9,15 @@ body {
     background: lightblue;
 }
 
-
-.jumbotron{
-    margin: 0 20% 3% 5%;
-    height: 50px;
-    position: relative; 
+h1 {
+    background-image: url(https://img.wallpapersafari.com/desktop/1440/900/62/83/v3qT9H.jpg);
+    height: 150px;
+    color: black;
+    text-align: center;
     width: 100%;
-}
+    padding: 50px 0px 0px 0px;
+    background-repeat: no-repeat;
 
-.display-4{
-    position: left;
-    position: absolute;
-}
-
-.lead{
-    position: absolute;
 }
 
 .boxed {
@@ -47,7 +41,7 @@ body {
     float: right;
     background: white;
     margin-right: 5%;
-
+    border-radius: 10px;
 
 
 }
@@ -65,7 +59,7 @@ body {
     float: left;
     background: white;
     margin-left: 5%;
-
+    border-radius: 10px;
 
 }
 .clearfix::after {
@@ -74,17 +68,10 @@ body {
     display: table;
   }
 
-#suggestionsHeader {
-    text-align: center;
-}
 
-#resultsHeader {
-    text-align: center;
-}
 
-#ourName {
-    text-align: center;
-    
+#bandInput {
+    width: 300px;
 }
 
 

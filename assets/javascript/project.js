@@ -1,10 +1,13 @@
 var artistSearched = [];
 var suggestion = [];
 
+
 function displayBandInfo() {
 
 
+
     var queryURL = "https://app.ticketmaster.com/discovery/v2/events.json?keyword=" + bandName + "&city=" + city + "&apikey=cBL4SnU5itvcXd4uhDb6raolj7gNc9co" 
+
 
     $.ajax({
         url: queryURL,
@@ -22,6 +25,7 @@ function displayBandInfo() {
 
     });
 };
+
 
 $("#submit").on("click", function (event) {
     event.preventDefault();
@@ -42,6 +46,7 @@ $("#submit").on("click", function (event) {
     
 });
 
+
 function appendEvent(event) {
 
     var eventName = event.name;
@@ -60,7 +65,10 @@ function appendEvent(event) {
     $("#results").append("<h2>" + eventName + "</h2>");
     $("#results").append("<p> <a href=" + url + " target='_blank'>Click Here For Tickets!</a></p>");
     $("#results").append("<image src=" + image.url + "></image><br>");
- } 
+
+
+
+}
 
 function displaySuggestionInfo() {
 
@@ -73,12 +81,17 @@ function displaySuggestionInfo() {
         contentType: "application/json",
         dataType: "jsonp"
     }).then(function (response) {
+
        
          console.log(response);
-        
-        $(".scrollBoxSuggestions").html("");
-        console.log('suggestion pre loop', suggestion)
-       
+ 
+ 
+
+
+
+  
+$(".scrollBoxSuggestions").html("");
+  
         for (var i = 0; i < 20; i++) {
 
             var suggestedLink = response.Similar.Results[i].Name;
@@ -108,3 +121,4 @@ function rerunTicketMaster() {
 
     };
 }
+
