@@ -1,47 +1,4 @@
 
-var artistSearched = [];
-
-function displaySuggestionInfo() {
-
-    var suggestion = ""
-    // var suggestion = this.attr("Name");
-    var queryURL = "https://tastedive.com/api/similar?q=" + artistSearched + "&k=332517-project1-8TB60H4T";
-
-    $.ajax({
-        url: queryURL,
-        method: "GET",
-        contentType: "application/json",
-        dataType: "jsonp"
-    }).then(function (response) {
-        // console.log(response.Similar);
-        console.log(response);
-        // console.log(response.Similar.Results);
-        for (var i = 0; i < response.Similar.Results.length; i++) {
-            $(".scrollBoxSuggestions").append("<p>Suggestions:" + response.Similar.Results[i].Name + "</p>");
-            console.log(response.Similar.Results[i].Name);
-        }
-    });
-    // TicketMasterArray[i].Artits is array of all artists performing in the searched area
-// that ticket master has on record
-// if (response.Similar.Results[i].Name === TicketMasterArray[i].Artist){
-//     $(".scrollBoxSuggestions").append("<p>Suggestions:" + response.Similar.Results[i].Name + "</p>")
- 
-//  }   else {
-//     $(".scrollBoxSuggestions").append("<p> No upcoming Good shows </p>")
-//  }
-}
-$(".btn").on("click", function (event) {
-
-    event.preventDefault();
-
-    var artist = $("#band-input").val().trim();
-    artistSearched.push(artist);
-    console.log(artist);
-
-    displaySuggestionInfo();
-
-});
-
 var bands = [];
 var bandName = "";
 var city = "";
@@ -51,7 +8,8 @@ var city = "";
 function displayBandInfo() {
 
 
-    var queryURL = "https://app.ticketmaster.com/discovery/v2/events.json?keyword=" + bandName + "&city=" + city + "&apikey=cBL4SnU5itvcXd4uhDb6raolj7gNc9co"
+    var queryURL = "https://app.ticketmaster.com/discovery/v2/events.json?keyword=" 
+    + bandName + "&city=" + city + "&apikey=cBL4SnU5itvcXd4uhDb6raolj7gNc9co"
 
 
     $.ajax({
@@ -63,7 +21,7 @@ function displayBandInfo() {
         var image = response._embedded.events.image;
 
         response._embedded.events.forEach(function (event) {
-            console.log(event);
+            // console.log(event);
             appendEvent(event);
 
         });
@@ -71,16 +29,6 @@ function displayBandInfo() {
     });
 };
 
-$("#submit").on("click", function (event) {
-    event.preventDefault();
-    bandName = $("#bandInput").val().trim();
-    city = $("#location").val()
-    console.log(bandName);
-    console.log(city);
-    displayBandInfo();
-
-
-});
 
 function appendEvent(event) {
 
@@ -96,22 +44,23 @@ function appendEvent(event) {
         }
 
     }
-    console.log(image);
+    // console.log(image);
 
 
     $("#results").append(eventName);
     $("#results").append(url);
-    $("#results").append("<image src=" + image.url + "></image>");
+    $("#results").append("<image src=" + image.url + "></image><br>");
 
 }
 
 
 //===================
 var artistSearched = [];
+ var suggestion = [];
 
 function displaySuggestionInfo() {
 
-    var suggestion = ""
+   
     // var suggestion = this.attr("Name");
     var queryURL = "https://tastedive.com/api/similar?q=" + artistSearched + "&k=332517-project1-8TB60H4T";
 
@@ -123,30 +72,54 @@ function displaySuggestionInfo() {
     }).then(function (response) {
         // console.log(response.Similar);
         console.log(response);
+        // suggestion=[];
         // console.log(response.Similar.Results);
         for (var i = 0; i < response.Similar.Results.length; i++) {
+            suggestion.push(response.Similar.Results[i].Name);
             $(".scrollBoxSuggestions").append("<p>Suggestions:" + response.Similar.Results[i].Name + "</p>");
-            console.log(response.Similar.Results[i].Name);
+           
         }
     });
-//    
-
-// if (response.Similar.Results[i].Name === TicketMasterArray[i].Artist){
-//     $(".scrollBoxSuggestions").append("<p>Suggestions:" + response.Similar.Results[i].Name + "</p>")
+    
+}   
  
-//  }   else {
-//     $(".scrollBoxSuggestions").append("<p> No upcoming Good shows </p>")
-//  }
-}
-$(".btn").on("click", function (event) {
+// function requeryTM(){
 
+   
+//         var queryURL = "https://app.ticketmaster.com/discovery/v2/events.json?keyword=" 
+//         + suggestion + "&city=" + city + "&apikey=cBL4SnU5itvcXd4uhDb6raolj7gNc9co"
+    
+//         $.ajax({
+//             url: queryURL,
+//             method: "GET"
+//         }).then(function (response) {
+//             console.log(response);
+//             console.log("hi");
+//          for(var i=0; i < suggestion.length; i++){    
+//              $(".scrollBoxSuggestions").append("<p>New: " + response.link.self + "</p>");
+//             }
+           
+//         });
+      
+// }
+
+$("#submit").on("click", function (event) {
     event.preventDefault();
-
-    var artist = $("#band-input").val();
+    bandName = $("#bandInput").val().trim();
+    city = $("#location").val()
+    // console.log(bandName);
+    // console.log(city);
+    var artist = $("#bandInput").val();
     artistSearched.push(artist);
-    console.log(artist);
-
+    // console.log(artist);
     displaySuggestionInfo();
+    displayBandInfo();
+    // requeryTM();
+
 
 });
+
+function renderButtons() {
+    $("#")
+}
 
