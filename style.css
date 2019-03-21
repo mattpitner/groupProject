@@ -1,24 +1,37 @@
 
 .wrapper{
-    background: lightblue;
+    background: url("https://img.wallpapersafari.com/desktop/1440/900/62/83/v3qT9H.jpg");
+    
     position: relative;
     
     
+}
+
+#title{
+    width: 100%;
 }
 body {
     background: lightblue;
 }
 
 
-.jumbotron{
+.container{
+    width: 100%;
     margin: 0 20% 3% 5%;
     height: 50px;
     position: relative;
+    background: url("https://img.wallpapersafari.com/desktop/1440/900/62/83/v3qT9H.jpg");
+
+    
 }
 
 .display-4{
     position: left;
     position: absolute;
+    text-shadow: 2px 2px 8px #FF0000;
+}
+#form1,#form2{
+    color:#fff;
 }
 
 .lead{
@@ -75,6 +88,10 @@ body {
 
 #bandInput {
     width: 300px;
+}
 
+html {
+  background:  
+}
 
 

@@ -1,47 +1,4 @@
 
-var artistSearched = [];
-
-function displaySuggestionInfo() {
-
-    var suggestion = ""
-    // var suggestion = this.attr("Name");
-    var queryURL = "https://tastedive.com/api/similar?q=" + artistSearched + "&k=332517-project1-8TB60H4T";
-
-    $.ajax({
-        url: queryURL,
-        method: "GET",
-        contentType: "application/json",
-        dataType: "jsonp"
-    }).then(function (response) {
-        // console.log(response.Similar);
-        console.log(response);
-        // console.log(response.Similar.Results);
-        for (var i = 0; i < response.Similar.Results.length; i++) {
-            $(".scrollBoxSuggestions").append("<p>Suggestions:" + response.Similar.Results[i].Name + "</p>");
-            console.log(response.Similar.Results[i].Name);
-        }
-    });
-    // TicketMasterArray[i].Artits is array of all artists performing in the searched area
-// that ticket master has on record
-// if (response.Similar.Results[i].Name === TicketMasterArray[i].Artist){
-//     $(".scrollBoxSuggestions").append("<p>Suggestions:" + response.Similar.Results[i].Name + "</p>")
- 
-//  }   else {
-//     $(".scrollBoxSuggestions").append("<p> No upcoming Good shows </p>")
-//  }
-}
-$(".btn").on("click", function (event) {
-
-    event.preventDefault();
-
-    var artist = $("#band-input").val().trim();
-    artistSearched.push(artist);
-    console.log(artist);
-
-    displaySuggestionInfo();
-
-});
-
 var bands = [];
 var bandName = "";
 var city = "";
@@ -63,8 +20,10 @@ function displayBandInfo() {
         var image = response._embedded.events.image;
 
         response._embedded.events.forEach(function (event) {
+
             console.log(event);
             appendEvent(event);
+            
 
         });
 
@@ -86,7 +45,7 @@ function appendEvent(event) {
 
     var eventName = event.name;
     var url = event.url;
-    var imageURL = event.images[1].url;
+    var image = event.images[1].url;
     var image = "";
 
     for (i = 0; i < event.images.length; i++) {
@@ -101,20 +60,26 @@ function appendEvent(event) {
 
     $("#results").append(eventName);
     $("#results").append(url);
-    $("#results").append("<image src=" + image.url + "></image>");
+    $("#results").append(image);
 
 }
+
+
+
+
 
 
 //===================
 var artistSearched = [];
 
+
 function displaySuggestionInfo() {
 
-    var suggestion = ""
-    // var suggestion = this.attr("Name");
-    var queryURL = "https://tastedive.com/api/similar?q=" + artistSearched + "&k=332517-project1-8TB60H4T";
 
+    var suggestion = ""
+    
+    var queryURL = "https://tastedive.com/api/similar?q=" + artistSearched + "&k=332517-project1-8TB60H4T";
+    console.log(artistSearched);
     $.ajax({
         url: queryURL,
         method: "GET",
@@ -124,12 +89,29 @@ function displaySuggestionInfo() {
         // console.log(response.Similar);
         console.log(response);
         // console.log(response.Similar.Results);
-        for (var i = 0; i < response.Similar.Results.length; i++) {
+        for (var i = 0; i < response.Similar.Results.length; i ++) {
             $(".scrollBoxSuggestions").append("<p>Suggestions:" + response.Similar.Results[i].Name + "</p>");
             console.log(response.Similar.Results[i].Name);
         }
     });
-//    
+
+    var count = 5;
+    $.ajax ({
+        url: queryURL,
+        method: "GET",
+        contentType: "application/json",
+        dataType: "jsonp"
+        
+    }).then(function(response){
+        console.log(response);
+        for (count = 0; i < response.Similar.Results.length; count ++) {
+            $(".scrollBoxSuggestions").append("<p>Suggestions:" + response.Similar.Results[count].Name + "</p>");
+            console.log(response.Similar.Results[count].Name);
+
+    })
+    
+    
+
 
 // if (response.Similar.Results[i].Name === TicketMasterArray[i].Artist){
 //     $(".scrollBoxSuggestions").append("<p>Suggestions:" + response.Similar.Results[i].Name + "</p>")
@@ -142,11 +124,16 @@ $(".btn").on("click", function (event) {
 
     event.preventDefault();
 
-    var artist = $("#band-input").val();
+    var artist = $("#bandInput").val();
     artistSearched.push(artist);
     console.log(artist);
 
     displaySuggestionInfo();
 
 });
+
+
+
+
+
 
