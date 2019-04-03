@@ -1,9 +1,14 @@
 
 .wrapper{
-    background: lightblue;
+    background: url("https://img.wallpapersafari.com/desktop/1440/900/62/83/v3qT9H.jpg");
+    
     position: relative;
     
     
+}
+
+#title{
+    width: 100%;
 }
 body {
     background: lightblue;
@@ -16,8 +21,18 @@ h1 {
     text-align: center;
     width: 100%;
     padding: 50px 0px 0px 0px;
-    background-repeat: no-repeat;
+    background-repeat: no-repeat;}
 
+
+
+
+  
+#form1,#form2{
+    color:#fff;
+}
+
+.lead{
+    position: absolute;
 }
 
 .boxed {
@@ -74,5 +89,8 @@ h1 {
     width: 300px;
 }
 
+html {
+  background:  
+}
 
 
